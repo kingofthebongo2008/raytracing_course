@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "raytracing_course", "raytracing_course.vcxproj", "{CBECFBF5-B44B-4E67-9295-A867FADAC41C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		debug|x64 = debug|x64
+		release|x64 = release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CBECFBF5-B44B-4E67-9295-A867FADAC41C}.debug|x64.ActiveCfg = debug|x64
+		{CBECFBF5-B44B-4E67-9295-A867FADAC41C}.debug|x64.Build.0 = debug|x64
+		{CBECFBF5-B44B-4E67-9295-A867FADAC41C}.release|x64.ActiveCfg = release|x64
+		{CBECFBF5-B44B-4E67-9295-A867FADAC41C}.release|x64.Build.0 = release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		        SolutionGuid = {01CC4DB0-D663-4AC6-B56B-3860B2ADD12A}
+		                        SolutionGuid = {7BC63D18-B6F4-4FB3-9801-798F21E9CCAA}
+		                SolutionGuid = {83E21738-62E5-4EE6-BFDF-503546E49CFB}
+		SolutionGuid = {D4858724-9579-4DA7-A348-5ABD81B677C4}
+	EndGlobalSection
+EndGlobal
