@@ -2,11 +2,12 @@
 #include "pch.h"
 #include <iostream>
 #include <limits>
+#include <random>
 
 #include "ray.h"
 #include "sphere.h"
 #include "hitable_list.h"
-
+#include "camera.h"
 
 static vec3 color(const ray& r, hitable* world)
 {
@@ -25,10 +26,19 @@ static vec3 color(const ray& r, hitable* world)
     }
 }
 
+static float rnd()
+{
+    static std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    static std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    static std::uniform_real_distribution<> dis(0.0, 1.0);
+    return dis(gen);
+}
+
 int32_t main(int32_t argc, char* argv[])
 {
     int32_t nx = 1280;
     int32_t ny = 720;
+    int32_t ns = 1;
 
     std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
@@ -44,20 +54,29 @@ int32_t main(int32_t argc, char* argv[])
 
     hitable_list* world = new hitable_list(list, 2);
 
+    camera cam;
+
     for (int32_t j = ny - 1; j >= 0; j--)
     {
         for (int32_t i = 0; i < nx; i++)
         {
-            float u = float(i) / float(nx);
-            float v = float(j) / float(ny);
-            ray r(origin, lower_left_corner + u * horizontal + v * vertical);
+            vec3 col(0, 0, 0);
 
-            vec3 col = color(r,world);
+            for (int32_t s = 0; s < ns; ++s)
+            {
+                float u = float( i + rnd()) / float(nx);
+                float v = float( j + rnd()) / float(ny);
+
+                ray r = cam.get_ray(u, v);
+
+                col += color(r, world);
+            }
+
+            col /= ns;
 
             int32_t ir = int32_t(255.99 * col.r());
             int32_t ig = int32_t(255.99 * col.g());
             int32_t ib = int32_t(255.99 * col.b());
-
             std::cout << ir << " " << ig << " " << ib << "\n";
         }
     }
