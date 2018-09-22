@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
 <ItemGroup> 
-<ClInclude Include = "..\src\raytracing_course\private\application.h"/>
-<ClInclude Include = "..\src\raytracing_course\private\dx_helper.h"/>
+<ClInclude Include = "..\src\raytracing_course\private\hitable.h"/>
+<ClInclude Include = "..\src\raytracing_course\private\hitable_list.h"/>
 <ClInclude Include = "..\src\raytracing_course\private\pch.h"/>
 <ClInclude Include = "..\src\raytracing_course\private\ray.h"/>
+<ClInclude Include = "..\src\raytracing_course\private\sphere.h"/>
 <ClInclude Include = "..\src\raytracing_course\private\vec3.h"/>
 </ItemGroup> 
 </Project> 
