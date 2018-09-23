@@ -4,6 +4,7 @@
 <ClInclude Include = "..\src\raytracing_course\private\camera.h"/>
 <ClInclude Include = "..\src\raytracing_course\private\hitable.h"/>
 <ClInclude Include = "..\src\raytracing_course\private\hitable_list.h"/>
+<ClInclude Include = "..\src\raytracing_course\private\material.h"/>
 <ClInclude Include = "..\src\raytracing_course\private\pch.h"/>
 <ClInclude Include = "..\src\raytracing_course\private\ray.h"/>
 <ClInclude Include = "..\src\raytracing_course\private\sphere.h"/>
