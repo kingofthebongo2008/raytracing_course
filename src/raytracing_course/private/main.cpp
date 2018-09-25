@@ -39,11 +39,29 @@ static vec3 color(const ray& r, hitable* world, int depth)
     }
 }
 
+static hitable* randomscene()
+{
+    int32_t n = 500;
+
+    hitable** list = new hitable*[n + 1];
+
+    list[0] = new sphere(vec3(0, -1000, 0), 1000, new lambertian(vec3(0.5, 0.5, 0.5)));
+
+    int32_t i = 1;
+
+    for (int32_t a = -11; a < 11; ++a)
+    {
+        //for (int32_t b = )
+    }
+
+    return nullptr;
+}
+
 int32_t main(int32_t argc, char* argv[])
 {
-    int32_t nx = 1280;
-    int32_t ny = 720;
-    int32_t ns = 256;
+    int32_t nx = 1280 / 2;
+    int32_t ny = 720 / 2;
+    int32_t ns = 100;
 
     std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
@@ -54,7 +72,12 @@ int32_t main(int32_t argc, char* argv[])
 
     hitable* list[5];
 
-    camera cam(vec3( -2,2,1), vec3(0,0,-1), vec3( 0,1,0), 90.0f, float(nx) / float(ny));
+    vec3 lookfrom(3, 3, 2);
+    vec3 lookat(0, 0, -1);
+    float dist_to_focus = (lookfrom - lookat).length();
+    float aperture = 2.0f;
+
+    camera cam(lookfrom, lookat, vec3( 0,1,0), 20.0f, float(nx) / float(ny), aperture, dist_to_focus);
     float r = cos(M_PI / 4);
 
     list[0] = new sphere(vec3(0, 0, -1), 0.5, new lambertian(vec3(0.1, 0.2, 0.5)));
