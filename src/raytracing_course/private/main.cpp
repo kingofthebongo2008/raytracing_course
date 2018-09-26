@@ -39,7 +39,7 @@ static vec3 color(const ray& r, hitable* world, int depth)
     }
 }
 
-static hitable* randomscene()
+static hitable_list* randomscene()
 {
     int32_t n = 500;
 
@@ -51,17 +51,42 @@ static hitable* randomscene()
 
     for (int32_t a = -11; a < 11; ++a)
     {
-        //for (int32_t b = )
+        for (int32_t b = -11; b < 11; ++b)
+        {
+            float choose_mat = rnd();
+
+            vec3 center(a + 0.9 * rnd(), 0.2, b + 0.9*rnd());
+
+            if ( (center - vec3(4, 0.2, 0)).length() > 0.9)
+            {
+                if (choose_mat < 0.8)
+                {
+                    list[i++] = new sphere(center, 0.2, new lambertian(vec3(rnd()* rnd(), rnd()*rnd(), rnd()* rnd())));
+                }
+                else if (choose_mat < 0.95)
+                {
+                    list[i++] = new sphere(center, 0.2, new metal(vec3(0.5 * (1 + rnd()), 0.5 * (1 + rnd()), 0.5 * (1 + rnd())), 0.5 * (0 + rnd())));
+                }
+                else
+                {
+                    list[i++] = new sphere(center, 0.2, new dielectric(1.5));
+                }
+            }
+        }
     }
 
-    return nullptr;
+    list[i++] = new sphere(vec3(0, 1, 0), 1.0, new dielectric(1.5));
+    list[i++] = new sphere(vec3(-4, 1, 0), 1.0, new lambertian(vec3(0.4,0.2,0.1)));
+    list[i++] = new sphere(vec3(4, 1, 0), 1.0, new metal(vec3(0.7,0.6,0.5), 0.0));
+
+    return new hitable_list(list, i);
 }
 
 int32_t main(int32_t argc, char* argv[])
 {
-    int32_t nx = 1280 / 2;
-    int32_t ny = 720 / 2;
-    int32_t ns = 100;
+    int32_t nx = 1920;
+    int32_t ny = 1080;
+    int32_t ns = 256;
 
     std::cout << "P3\n" << nx << " " << ny << "\n255\n";
 
@@ -72,7 +97,7 @@ int32_t main(int32_t argc, char* argv[])
 
     hitable* list[5];
 
-    vec3 lookfrom(3, 3, 2);
+    vec3 lookfrom(12, 12, 8);
     vec3 lookat(0, 0, -1);
     float dist_to_focus = (lookfrom - lookat).length();
     float aperture = 2.0f;
@@ -87,6 +112,8 @@ int32_t main(int32_t argc, char* argv[])
     list[4] = new sphere(vec3(-1, 0, -1), -0.45, new dielectric(1.5));
 
     hitable_list* world = new hitable_list(list, 5);
+
+    world = randomscene();
 
     for (int32_t j = ny - 1; j >= 0; j--)
     {
