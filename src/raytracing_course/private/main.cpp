@@ -82,45 +82,8 @@ static hitable_list* randomscene()
     return new hitable_list(list, i);
 }
 
-static void test()
-{
-    int32_t a, b, c, d, e;
-
-    for (a = 0; a <= 9; ++a )
-    for (b = 0; b <= 9; ++b)
-    for (c = 0; c <= 9; ++c)
-    for (d = 0; d <= 9; ++d)
-    for (e = 0; e <= 9; ++e)
-    {
-        int32_t n1 = 0;
-        int32_t n2 = 0;
-            
-        n1 += a * 10 * 10 * 10 * 10;
-        n1 += b * 10 * 10 * 10;
-        n1 += c * 10 * 10;
-        n1 += d * 10;
-        n1 += e;
-
-        n2 += e * 10 * 10 * 10 * 10;
-        n2 += d * 10 * 10 * 10;
-        n2 += c * 10 * 10;
-        n2 += b * 10;
-        n2 += a;
-
-        if ( n1 / 9 == n2 )
-        {
-            std::cout << n1 << std::endl;
-        }
-    }
-
-
-    std::cout << "done" << std::endl;
-}
-
 int32_t main(int32_t argc, char* argv[])
 {
-    test();
-    return 0;
     int32_t nx = 1920;
     int32_t ny = 1080;
     int32_t ns = 256;
