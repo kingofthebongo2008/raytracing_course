@@ -52,6 +52,8 @@ bool sphere::hit(const ray& r, float tmin, float tmax, hit_record& rec) const
                 return true;
             }
         }
+
+        return false;
     }
     else
     {

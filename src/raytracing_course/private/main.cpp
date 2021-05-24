@@ -84,8 +84,8 @@ static hitable_list* randomscene()
 
 int32_t main(int32_t argc, char* argv[])
 {
-    int32_t nx = 1920;
-    int32_t ny = 1080;
+    int32_t nx = 320;
+    int32_t ny = 240;
     int32_t ns = 256;
 
     std::cout << "P3\n" << nx << " " << ny << "\n255\n";

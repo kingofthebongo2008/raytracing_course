@@ -17,7 +17,7 @@ class hitable_list : public hitable
 
 bool hitable_list::hit(const ray& t, float t_min, float t_max, hit_record& rec) const
 {
-    hit_record r;
+    hit_record r = {};
     bool hit_something = false;
     double closest_so_far = t_max;
 
